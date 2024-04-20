@@ -1,42 +1,90 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Basic CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif; /* Default to Arial if sans-serif isn't available */
+  background-color: #8b8b8b; /* Light grey background */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Main App Container */
+.App {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Container holding all the notes */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Adjust based on your layout preference */
 }
 
-.card {
-  padding: 2em;
+/* Individual note card styling */
+.note-card {
+  background-color: #5f5d5d;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  transition: box-shadow 0.3s ease;
+  position: relative; /* For positioning any absolute elements inside the card */
+  overflow: hidden; /* Ensures no content spills out */
 }
 
-.read-the-docs {
-  color: #888;
+/* Hover effect for note cards */
+.note-card:hover {
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* Header within each note card */
+.note-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Paragraph/content styling within each note card */
+.note-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Button styles for actions like pin and delete */
+.note-card button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+}
+
+/* Pin button style */
+.note-card button:first-child {
+  right: 10px;
+}
+
+/* Delete button style */
+.note-card button:last-child {
+  right: 40px;
+}
+
+/* Icon styles for clarity and visual appeal */
+.note-card button svg {
+  width: 24px;
+  height: 24px;
+  fill: #333; /* Icon color */
+  transition: fill 0.2s ease;
+}
+
+.note-card button:hover svg {
+  fill: #007BFF; /* Change color on hover for better interaction feedback */
 }
