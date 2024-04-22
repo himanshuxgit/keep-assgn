@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { MdColorLens, MdAddPhotoAlternate, MdOutlinePushPin, MdPushPin } from 'react-icons/md';
 
 interface NewNoteFormProps {
-  backgroundImage: string | null;
+  backgroundImage?: string | null;
 }
+
+
 
 const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -20,7 +22,7 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
 
   useEffect(() => {
     // Initially set the background image from props if available
-    setImage(backgroundImage);
+    setImage(backgroundImage||null);
   }, [backgroundImage]);
 
   const autoResizeTextarea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -103,7 +105,7 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
   }, [formRef]);
 
   // Apply the background image to the form style dynamically
-  const formStyle = {
+  const formStyle: React.CSSProperties = {
     backgroundColor: color,
     backgroundImage: image ? `url(${image})` : 'none',
     display: 'flex',

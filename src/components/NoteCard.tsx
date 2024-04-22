@@ -6,7 +6,7 @@ import { Note } from '../features/notesSlice'; // Ensure this import path is cor
 
 interface NoteCardProps {
   note: Note;
-  backgroundImage: string | null; // Define the prop for background image
+  backgroundImage?: string | null; // Define the prop for background image
 }
 
 const NoteCard: React.FC<NoteCardProps> = ({ note, backgroundImage }) => {
