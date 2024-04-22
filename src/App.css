@@ -306,12 +306,18 @@ textarea:focus, input:focus, button:focus{
 }
 
 @media screen and (max-width: 426px) {
-  .sidebar {
+  .sidebar span {
     display: none;
+  }
+  .sidebar {
+    width: 50px;
   }
 
   .note-form-expanded, .note-field-collapsed {
-    width: 300px;
-    left: 270px;
+    width: 250px;
+    left: 190px;
+  }
+  .main-content {
+    margin-left: 180px;
   }
 }
