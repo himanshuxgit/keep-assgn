@@ -1,4 +1,3 @@
-import React from 'react';
 import { MdSearch, MdNotifications, MdEdit, MdArchive, MdDelete } from 'react-icons/md';
 
 const Sidebar = () => {
