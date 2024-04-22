@@ -287,8 +287,8 @@ textarea:focus, input:focus, button:focus{
     width: 600px;
   }
   .note-form-expanded, .note-field-collapsed {
-    width: 500px;
-    left: 600px;
+    width: 400px;
+    left: 550px;
   }
 }
 
@@ -300,8 +300,8 @@ textarea:focus, input:focus, button:focus{
   
   
     .note-form-expanded, .note-field-collapsed {
-      width: 300px;
-      left: 500px;
+      width: 250px;
+      left: 420px;
     }
 }
 

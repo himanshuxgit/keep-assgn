@@ -1,4 +1,3 @@
-// NewNoteForm.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppDispatch } from '../store/hooks';
 import { addNote } from '../features/notesSlice';
@@ -19,13 +18,17 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
   const dispatch = useAppDispatch();
   const formRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    // Initially set the background image from props if available
+    setImage(backgroundImage);
+  }, [backgroundImage]);
+
   const autoResizeTextarea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const maxHeight = 100; // maximum height in pixels
     event.target.style.height = 'inherit'; // Reset the height to calculate scrollHeight
     const newHeight = Math.min(event.target.scrollHeight, maxHeight); // Use the smaller of scrollHeight and maxHeight
     event.target.style.height = `${newHeight}px`; // Set the new height
     
-    // If the new height is at the maximum, add overflow, otherwise remove it
     if (newHeight >= maxHeight) {
       event.target.style.overflowY = 'auto';
     } else {
@@ -64,7 +67,6 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
 
   const handleExpand = () => {
     setIsExpanded(true);
-    // Write code to change the value of margin top in class grid to 50 px
     const gridElement = document.querySelector('.grid') as HTMLElement;
     if (gridElement) {
       gridElement.style.marginTop = '200px';
@@ -73,7 +75,7 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
 
   const handleBackgroundColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setColor(e.target.value);
-    setImage(null);
+    setImage(null); // Clear the image when changing the background color
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,8 +102,21 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [formRef]);
 
+  // Apply the background image to the form style dynamically
+  const formStyle = {
+    backgroundColor: color,
+    backgroundImage: image ? `url(${image})` : 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '10px auto',
+    padding: '10px',
+    borderRadius: '8px',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  };
+
   return (
-    <div ref={formRef} className={isExpanded ? 'note-form-expanded' : 'note-field-collapsed'} style={{ backgroundColor: color, display: 'flex', flexDirection: 'column', margin: '10px auto', padding: '10px', borderRadius: '8px' }}>
+    <div ref={formRef} className={isExpanded ? 'note-form-expanded' : 'note-field-collapsed'} style={formStyle}>
       <form onSubmit={handleSubmit}>
         {isExpanded ? (
           <>
@@ -119,11 +134,10 @@ const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
               value={content}
               onChange={autoResizeTextarea}
               className="input-field"
-              style={{ minHeight: '50px' }} // Inline style for minHeight
+              style={{ minHeight: '50px' }}
             />
             <div style={{ alignSelf: 'start' }}>
               <div>
-
                 <label>
                   <MdColorLens className="icon-button" />
                   <input
