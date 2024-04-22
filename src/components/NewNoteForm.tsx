@@ -1,10 +1,15 @@
+// NewNoteForm.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { useAppDispatch } from '../store/hooks';
 import { addNote } from '../features/notesSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { MdColorLens, MdAddPhotoAlternate, MdOutlinePushPin, MdPushPin } from 'react-icons/md';
 
-const NewNoteForm = () => {
+interface NewNoteFormProps {
+  backgroundImage: string | null;
+}
+
+const NewNoteForm: React.FC<NewNoteFormProps> = ({ backgroundImage }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -61,10 +66,9 @@ const NewNoteForm = () => {
     setIsExpanded(true);
     // Write code to change the value of margin top in class grid to 50 px
     const gridElement = document.querySelector('.grid') as HTMLElement;
-      if (gridElement) {
-        gridElement.style.marginTop = '200px';
-        
-      }
+    if (gridElement) {
+      gridElement.style.marginTop = '200px';
+    }
   };
 
   const handleBackgroundColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -120,38 +124,38 @@ const NewNoteForm = () => {
             <div style={{ alignSelf: 'start' }}>
               <div>
 
-              <label>
-                <MdColorLens className="icon-button" />
-                <input
-                  type="color"
-                  value={color}
-                  onChange={handleBackgroundColorChange}
-                  style={{ display: 'none' }}
-                />
-              </label>
-              <label>
-                <MdAddPhotoAlternate className="icon-button" />
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  style={{ display: 'none' }}
-                />
-              </label>
-              <button
-                type="button"
-                onClick={handleSubmit}
-                className="close-button"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                onClick={() => setPinned(!pinned)}
-                className="pin-button"
-              >
-                {pinned ? <MdOutlinePushPin /> : <MdPushPin />}
-              </button>
+                <label>
+                  <MdColorLens className="icon-button" />
+                  <input
+                    type="color"
+                    value={color}
+                    onChange={handleBackgroundColorChange}
+                    style={{ display: 'none' }}
+                  />
+                </label>
+                <label>
+                  <MdAddPhotoAlternate className="icon-button" />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    style={{ display: 'none' }}
+                  />
+                </label>
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="close-button"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPinned(!pinned)}
+                  className="pin-button"
+                >
+                  {pinned ? <MdOutlinePushPin /> : <MdPushPin />}
+                </button>
               </div>
             </div>
           </>
