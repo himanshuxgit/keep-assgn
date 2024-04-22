@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Note Taking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a note-taking app built with React and Redux. It allows users to create, view, pin, and delete notes in a four-column layout. The app does not use any UI library or CSS framework and stores all the notes in Redux without requiring any API.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create a note with an optional title and content
+- View all created notes in a four-column layout
+- Pin a note to keep it at the top
+- Delete a note
 
-## Expanding the ESLint configuration
+## Bonus Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Ability to add images to a note
+- Ability to add background colors to a note
+- Mobile responsiveness
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- React
+- Redux
+- TypeScript (bonus feature)
+- CSS (without any UI library or CSS framework)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Getting Started
+
+To run the app locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/himanshuxgit/keep-assgn.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+4. Open the app in your browser: `http://localhost:3000`
+
+## Deployment
+
+The live version of the app is hosted at [https://keep-assgn.vercel.app](https://keep-assgn.vercel.app).
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
