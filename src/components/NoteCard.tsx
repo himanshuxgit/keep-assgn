@@ -13,12 +13,20 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
 
   // Function to convert line breaks in note content to <br/> elements
   const formatContent = (content: string) => {
-    return content.split('\n').map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        <br />
-      </React.Fragment>
-    ));
+    const lines = content.split('\n');
+    const displayedLines = lines.slice(0, 10); // Take only the first six lines
+    const hasMore = lines.length > 10; // Check if there are more than six lines
+  
+    return (
+      <>
+        {displayedLines.map((line, index) => (
+          <React.Fragment key={index}>
+            {line}<br />
+          </React.Fragment>
+        ))}
+        {hasMore && <span>...</span>} 
+      </>
+    );
   };
 
   return (
